@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class KategoriService {
@@ -23,6 +24,7 @@ public class KategoriService {
     }
 
     public Kategori create(Kategori kategori){
+        kategori.setId(UUID.randomUUID().toString());
         return kategoriRepository.save(kategori);
     }
 
