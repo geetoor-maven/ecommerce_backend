@@ -29,5 +29,14 @@ public class ProdukController {
         return produkService.create(produk);
     }
 
+    @PutMapping("/produk")
+    public Produk edit(@RequestBody Produk produk){
+        return produkService.edit(produk);
+    }
+
+    @DeleteMapping("/produk/{id}")
+    public void deleteById(@PathVariable("id") String id){
+        produkService.deleteById(id);
+    }
 
 }
