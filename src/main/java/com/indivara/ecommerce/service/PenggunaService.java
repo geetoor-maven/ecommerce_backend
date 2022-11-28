@@ -46,6 +46,16 @@ public class PenggunaService {
             throw new BadRequestExcep("Email : " + pengguna.getEmail() + " sudah terdaftar");
         }
 
+        // cek Nomor telepon kalau kosong
+        if (!StringUtils.hasText(pengguna.getHp())){
+            throw new BadRequestExcep("Nomor telepon harus di isi");
+        }
+
+        // cek Nomor kalau sudah terdaftar
+        if (penggunaRepository.existsByNumber(pengguna.getHp())){
+            throw new BadRequestExcep("Nomor telepon : " + pengguna.getHp() + " sudah terdaftar");
+        }
+
         return penggunaRepository.save(pengguna);
     }
 
